@@ -7,6 +7,7 @@ FROM ubuntu:latest as install
 COPY --from=bootstrap /etc/apt/sources.list.d/mozilla* /etc/apt/sources.list.d/
 COPY --from=bootstrap /etc/apt/trusted.gpg.d/mozilla* /etc/apt/trusted.gpg.d/
 COPY --from=bootstrap /usr/local/bin/geckodriver /usr/local/bin
+ENV CI true
 ENV LANG C.UTF-8
 ENV _JAVA_OPTIONS="-Djdk.net.URLClassPath.disableClassPathURLCheck=true"
 RUN apt-get update && \
