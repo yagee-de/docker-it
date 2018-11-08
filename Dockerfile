@@ -9,7 +9,7 @@ COPY --from=bootstrap /etc/apt/trusted.gpg.d/mozilla* /etc/apt/trusted.gpg.d/
 COPY --from=bootstrap /usr/local/bin/geckodriver /usr/local/bin
 ENV CI true
 ENV LANG C.UTF-8
-ENV _JAVA_OPTIONS="-Djdk.net.URLClassPath.disableClassPathURLCheck=true"
+ENV _JAVA_OPTIONS="-Djdk.net.URLClassPath.disableClassPathURLCheck=true -Dwebdriver.firefox.bin=/usr/bin/firefox-esr"
 RUN apt-get update && \
     apt-get dist-upgrade -y && \
     apt-get install  --no-install-recommends --no-install-suggests -y \
