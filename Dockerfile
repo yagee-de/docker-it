@@ -1,5 +1,5 @@
 FROM ubuntu:latest as bootstrap
-ARG GECKO_DRIVER=0.23.0
+ARG GECKO_DRIVER=0.21.0
 RUN apt-get update && apt-get install -y software-properties-common curl && add-apt-repository -y ppa:mozillateam/ppa \
  && curl -L https://github.com/mozilla/geckodriver/releases/download/v${GECKO_DRIVER}/geckodriver-v${GECKO_DRIVER}-linux64.tar.gz | tar xz -C /usr/local/bin
 
