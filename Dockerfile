@@ -1,5 +1,5 @@
 FROM centos:7 as bootstrap
-ARG GECKO_DRIVER=0.20.1
+ARG GECKO_DRIVER=0.26.0
 RUN curl -L https://github.com/mozilla/geckodriver/releases/download/v${GECKO_DRIVER}/geckodriver-v${GECKO_DRIVER}-linux64.tar.gz | tar xz -C /usr/local/bin
 
 FROM maven:3-jdk-11 as maven
