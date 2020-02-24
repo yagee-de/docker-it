@@ -15,6 +15,7 @@ ENV CI true
 ENV _JAVA_OPTIONS="-Djdk.net.URLClassPath.disableClassPathURLCheck=true -Dwebdriver.firefox.bin=/usr/bin/firefox-esr"
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 ENV MAVEN_OPTS=-Xmx3072m
+ENV LANG=C.UTF-8
 RUN groupadd -g 1000 mycore && \
     useradd -m -u 1000 -g mycore mycore
 COPY --chown=mycore:mycore toolchains.xml /home/mycore/.m2/
