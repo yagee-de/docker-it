@@ -12,7 +12,7 @@ COPY --from=bootstrap /etc/apt/trusted.gpg.d/mozilla* /etc/apt/trusted.gpg.d/
 COPY --from=bootstrap /usr/local/bin/geckodriver /usr/local/bin
 COPY --from=maven /usr/share/maven /usr/share/maven
 ENV CI true
-ENV _JAVA_OPTIONS="-Djdk.net.URLClassPath.disableClassPathURLCheck=true -Dwebdriver.firefox.bin=/usr/bin/firefox-esr"
+ENV JAVA_TOOL_OPTIONS="-Djdk.net.URLClassPath.disableClassPathURLCheck=true -Dwebdriver.firefox.bin=/usr/bin/firefox-esr"
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV MAVEN_OPTS=-Xmx3072m
 ENV LANG=C.UTF-8
@@ -25,7 +25,7 @@ RUN apt-get update && \
     rm -rf -v /var/lib/apt/lists/* /var/cache/apt 
 RUN apt-get update && \
     apt-get install  --no-install-recommends --no-install-suggests -y \
-	ca-certificates gnupg git subversion && \
+	ca-certificates gnupg git subversion lsof && \
     rm -rf -v /var/lib/apt/lists/* /var/cache/apt
 RUN apt-get update && \
     apt-get install  --no-install-recommends --no-install-suggests -y \
