@@ -25,7 +25,7 @@ RUN apt-get update && \
     rm -rf -v /var/lib/apt/lists/* /var/cache/apt 
 RUN apt-get update && \
     apt-get install  --no-install-recommends --no-install-suggests -y \
-	ca-certificates gnupg git subversion lsof && \
+	ca-certificates gnupg git subversion lsof libxss1 && \
     rm -rf -v /var/lib/apt/lists/* /var/cache/apt
 RUN apt-get update && \
     apt-get install  --no-install-recommends --no-install-suggests -y \
