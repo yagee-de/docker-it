@@ -7,13 +7,14 @@ FROM maven:3-eclipse-temurin as maven
 RUN mvn --version
 
 FROM ubuntu:jammy as install
+ARG TARGETARCH
 COPY --from=bootstrap /etc/apt/sources.list.d/mozilla* /etc/apt/sources.list.d/
 COPY --from=bootstrap /etc/apt/trusted.gpg.d/mozilla* /etc/apt/trusted.gpg.d/
 COPY --from=bootstrap /usr/local/bin/geckodriver /usr/local/bin
 COPY --from=maven /usr/share/maven /usr/share/maven
 ENV CI true
 ENV JAVA_TOOL_OPTIONS="-Djdk.net.URLClassPath.disableClassPathURLCheck=true -Dwebdriver.firefox.bin=/usr/bin/firefox-esr"
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-${TARGETARCH}
 ENV MAVEN_OPTS=-Xmx3072m
 ENV LANG=C.UTF-8
 RUN groupadd -g 1000 mycore && \
