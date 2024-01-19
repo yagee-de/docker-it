@@ -20,6 +20,7 @@ ENV LANG=C.UTF-8
 RUN groupadd -g 1000 mycore && \
     useradd -m -u 1000 -g mycore mycore
 COPY --chown=mycore:mycore toolchains.xml /home/mycore/.m2/
+COPY --chown=mycore:mycore gitconfig /home/mycore/.gitconfig
 RUN apt-get update && \
     apt-get dist-upgrade -y && \
     ln -s /usr/share/maven/bin/mvn /usr/bin/mvn && \
